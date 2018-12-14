@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import uuid from 'uuid';
 import './App.css';
+import { Provider } from 'react-redux';
+
+import Projects from './Components/Projects';
+import AddProject from './Components/AddProject';
+
+import store from './store';
 
 class App extends Component {
+
+	handleAddProject(project) {
+		let projects = this.state.projects;
+		projects.push(project);
+		this.setState({projects: projects});
+	}
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+    	<Provider store={store}>
+	      <div className="App">
+	        <AddProject addProject={this.handleAddProject.bind(this)} />
+	        <Projects />
+	      </div>
+	     </Provider>
     );
   }
 }
