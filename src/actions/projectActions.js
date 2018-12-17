@@ -9,15 +9,13 @@ export const fetchProjects = () => dispatch => {
 	}));
 }
 
-export const deleteProject = (projects, id) => dispatch => {
-	let index = projects.findIndex(x => x.id === id);
-	if(index >= 0) {
-    	projects.splice(index, 1);
-    }
-	dispatch({
-    	type: DELETE_PROJECT,
-    	payload: projects
-    });
+export const deleteProject = (id) => dispatch => {
+	fetch('https://jsonplaceholder.typicode.com/posts/1', {
+	  method: 'DELETE'
+	}).then(response => response.json())
+	.then(res => dispatch({
+		type: NEW_PROJECT
+	}));
 }
 
 export const addProject = projectData => dispatch => {

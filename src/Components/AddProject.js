@@ -11,6 +11,8 @@ class AddProject extends Component {
       title: '',
       body: ''
     }
+
+    this.onChange =  this.handleChange.bind(this);
   }
 
   static defaultProps = {
@@ -32,7 +34,7 @@ class AddProject extends Component {
       });*/
       const project = {
         title: this.state.title,
-        body: this.state.title
+        body: this.state.body
       };
       this.props.addProject(project);
     }
@@ -53,14 +55,18 @@ class AddProject extends Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Title</label><br/>
-            <input type="text" name="title" ref="title" onChange={this.handleChange.bind(this)} />
+            <input type="text" name="title" ref="title" onChange={this.onChange} />
           </div>
           <div>
+            <label>Body</label><br/>
+            <textarea name="body" ref="body" onChange={this.onChange}></textarea>
+          </div>
+          {/*<div>
             <label>Category</label><br/>
             <select ref="category">
               {categoryOptions}
             </select>
-          </div>
+          </div>*/}
           <br/>
           <input type="submit" value="Submit" />
         </form>

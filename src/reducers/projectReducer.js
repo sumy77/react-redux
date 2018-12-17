@@ -8,7 +8,6 @@ const initialState = {
 export default function(state = initialState, action) {
 	switch(action.type) {
 		case 'FETCH_PROJECTS':
-		case 'DELETE_PROJECT':
 			return {
 				...state,
 				items: action.payload
@@ -18,6 +17,11 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				item: action.payload
+			}
+		break;
+		case 'DELETE_PROJECT':
+			return {
+				...state
 			}
 		break;
 		default:

@@ -10,17 +10,11 @@ import store from './store';
 
 class App extends Component {
 
-	handleAddProject(project) {
-		let projects = this.state.projects;
-		projects.push(project);
-		this.setState({projects: projects});
-	}
-
   render() {
     return (
     	<Provider store={store}>
 	      <div className="App">
-	        <AddProject addProject={this.handleAddProject.bind(this)} />
+	        <AddProject />
 	        <Projects />
 	      </div>
 	     </Provider>
